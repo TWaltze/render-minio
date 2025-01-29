@@ -1,6 +1,7 @@
 services:
 - type: web
   name: minio-server
+  region: virginia
   healthCheckPath: /minio/health/live
   runtime: image
   image:
@@ -12,6 +13,7 @@ services:
   autoDeploy: false
   disk:
     name: data
+    sizeGB: 1
     mountPath: /data
   envVars:
   - key: MINIO_ROOT_USER
@@ -32,6 +34,7 @@ services:
 
 - type: web
   name: minio-console
+  region: virginia
   runtime: docker
   dockerContext: /
   dockerfilePath: ./Dockerfile
